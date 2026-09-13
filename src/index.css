@@ -1,0 +1,51 @@
+:root { --paper:#FBFAF6; }
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; padding: 0; height: 100%; }
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  color: #0F2E28;
+}
+button { font-family: inherit; }
+select, input { font-family: inherit; }
+select:focus, input:focus, button:focus-visible, a:focus-visible {
+  outline: 2px solid #0B6E4F;
+  outline-offset: 1px;
+}
+button:focus:not(:focus-visible) { outline: none; }
+table tbody tr.hoverable:hover { background: #FBFAF6; }
+.scroll-x { overflow-x: auto; }
+::-webkit-scrollbar { height: 8px; width: 8px; }
+::-webkit-scrollbar-thumb { background: #D8D4C8; border-radius: 99px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* responsive: collapse sidebar to top bar on small screens */
+@media (max-width: 860px) {
+  .app-shell { flex-direction: column !important; }
+  .app-sidebar {
+    width: 100% !important; height: auto !important; position: sticky !important;
+    top: 0 !important; flex-direction: row !important; align-items: center !important;
+    padding: 10px 12px !important; gap: 6px !important; z-index: 40;
+    overflow-x: auto !important;
+  }
+  .app-sidebar .nav-wrap { flex-direction: row !important; flex: none !important; gap: 2px !important; }
+  .app-sidebar .brand-block { padding-bottom: 0 !important; padding-right: 8px !important; flex-shrink: 0; }
+  .app-sidebar .nav-label { display: none; }
+  .app-sidebar .user-block { display: none !important; }
+  .app-sidebar nav button { padding: 9px !important; }
+  .app-main { padding: 18px 16px !important; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-3 { grid-template-columns: 1fr !important; }
+  .grid-2 { grid-template-columns: 1fr !important; }
+  .health-banner { grid-template-columns: 1fr !important; }
+  .health-banner .divider { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(255,255,255,.18); padding-top: 16px; }
+  .kanban { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 560px) {
+  .grid-4 { grid-template-columns: 1fr !important; }
+  .kanban { grid-template-columns: 1fr !important; }
+}
